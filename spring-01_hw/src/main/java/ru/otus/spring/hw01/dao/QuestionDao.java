@@ -1,10 +1,11 @@
 package ru.otus.spring.hw01.dao;
 
-import ru.otus.spring.hw01.domain.Question;
+import ru.otus.spring.hw01.domain.Questions;
+
 import java.io.IOException;
 
 public interface QuestionDao{
 
-    Question findQuestions() throws IOException;
+    Questions findQuestions() throws IOException;
 
 }

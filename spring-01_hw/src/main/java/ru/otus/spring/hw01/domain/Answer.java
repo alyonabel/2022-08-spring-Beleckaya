@@ -1,18 +1,14 @@
 package ru.otus.spring.hw01.domain;
 
-public class Answer {
+public  class Answer {
 
-    private String textAnswer;
+    private final String textAnswer;
 
     public Answer(String textAnswer) {
         this.textAnswer = textAnswer;
     }
 
-    public void setTextAnswer(String textAnswer) {
-        this.textAnswer = textAnswer;
-    }
-
-    public String getTextAnswer() {
+      public String getTextAnswer() {
         return textAnswer;
     }
 

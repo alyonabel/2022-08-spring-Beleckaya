@@ -1,11 +1,15 @@
 package ru.otus.spring.hw01.dao;
-import ru.otus.spring.hw01.domain.Question;
+
+import ru.otus.spring.hw01.domain.Questions;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionDaoImpl implements QuestionDao{
 
     private final String fileName;
+    private final List<String> questions = new ArrayList<>();
 
     public QuestionDaoImpl(String fileName) {
         this.fileName = fileName;
@@ -13,23 +17,20 @@ public class QuestionDaoImpl implements QuestionDao{
 
 
     @Override
-    public Question findQuestions() throws IOException {
+    public Questions findQuestions() throws IOException {
         try {
-
-            InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
-            byte[] b = new byte[is.available()];
-            int i;
-            while ((i = is.read()) != -1) {
-                System.out.print((char) i);
-            }
-            is.close();
-
+            InputStream input = getClass().getClassLoader().getResourceAsStream(fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            String line;
+            while((line=reader.readLine()) != null){
+                questions.add(line);}
+            System.out.println(questions);
         }
         catch (FileNotFoundException e)
         {
             System.out.println("The file with questions doesn't exist in the specified directory!");
         }
-        return new Question(fileName);
+       return new Questions(fileName);
     }
 
 }

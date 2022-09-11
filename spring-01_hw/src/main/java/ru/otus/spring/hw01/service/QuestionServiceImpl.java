@@ -1,7 +1,7 @@
 package ru.otus.spring.hw01.service;
 
 import ru.otus.spring.hw01.dao.QuestionDao;
-import ru.otus.spring.hw01.domain.Question;
+import ru.otus.spring.hw01.domain.Questions;
 
 import java.io.IOException;
 
@@ -14,8 +14,12 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public Question getQuestions() throws IOException {
+    public Questions getQuestions()  {
         System.out.println("\nHello! Let's start the test!\n");
-         return dao.findQuestions();
+        try {
+           return dao.findQuestions();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }return null;
     }
 }
