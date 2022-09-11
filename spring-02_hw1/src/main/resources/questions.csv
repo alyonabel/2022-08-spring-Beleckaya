@@ -1,0 +1,24 @@
+1.What is a class in Java?
+1)The level of complexity of the program. All operators are divided into classes depending on the complexity of their use
+2)The basic element of object-oriented programming
+3)A set of logic-level interface conventions that define the exchange of data between different program
+
+2.What does the NEW operator do?
+1)To announce a new interface
+2)To create a new variable
+3)To create an instance of a class
+
+3.What does the extends keyword mean?
+1)That it is an additional module of a class that extends its properties
+2)That the given class is inherited from another
+3)That this is the largest class in the program
+
+4.What does method overloading mean in Java?
+1)Changing the behavior of a class method relative to a child
+2)Several methods with the same name but different set of parameters
+3)Changing the behavior of a class method relative to its parent
+
+5.What does overriding a method in Java mean?
+1)Changing the behavior of a class method relative to its parent
+2)Several methods with the same name but different set of parameters
+3)Changing the behavior of a class method relative to a child
