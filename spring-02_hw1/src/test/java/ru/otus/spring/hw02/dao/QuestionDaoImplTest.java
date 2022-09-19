@@ -9,10 +9,15 @@ public class QuestionDaoImplTest  {
 
     @Test
     @DisplayName("If fileName is null, then NullPointerException")
-    void findQuestions() throws NullPointerException {
-
-        QuestionDaoImpl que = new QuestionDaoImpl(null);
+    void existFileQuestions() throws NullPointerException {
+        QuestionDaoImpl que = new QuestionDaoImpl(null,"");
         assertThrows(NullPointerException.class, que::findQuestions);
+    }
 
+    @Test
+    @DisplayName("If fileName is null, then NullPointerException")
+    void existFileAnswers() throws NullPointerException {
+        QuestionDaoImpl que = new QuestionDaoImpl("",null);
+        assertThrows(NullPointerException.class, que::resultTest);
     }
 }

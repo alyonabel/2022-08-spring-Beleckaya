@@ -1,15 +1,19 @@
 package ru.otus.spring.hw02.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.dao.QuestionDao;
 import ru.otus.spring.hw02.domain.Question;
 
 import java.io.IOException;
 import java.util.Scanner;
 
+@Service
 public class QuestionServiceImpl implements QuestionService{
 
     private final QuestionDao dao;
 
+    @Autowired
     public QuestionServiceImpl(QuestionDao dao) {
         this.dao = dao;
     }
@@ -26,4 +30,12 @@ public class QuestionServiceImpl implements QuestionService{
         introduceTest();
         return dao.findQuestions();
     }
+
+    @Override
+    public void getResult() throws IOException {
+        dao.resultTest();
+    }
+
+
+
 }
