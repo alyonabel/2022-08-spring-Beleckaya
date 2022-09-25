@@ -1,11 +1,11 @@
 package ru.otus.spring.hw02.dao;
 
+import org.springframework.stereotype.Component;
 import ru.otus.spring.hw02.domain.Question;
 
-import java.io.IOException;
+@Component
+public interface QuestionDao {
+    Question findQuestions();
 
-
-public interface QuestionDao{
-    Question findQuestions() throws IOException;
-    void resultTest() throws IOException;
+    void resultTest();
 }

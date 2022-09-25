@@ -11,8 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(Main.class);
         QuestionService service = context.getBean(QuestionService.class);
-        service.getQuestions();
-        service.getResult();
+        service.startTest();
         context.close();
     }
 }

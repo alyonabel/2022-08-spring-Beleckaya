@@ -7,6 +7,9 @@ import java.io.IOException;
 
 public interface QuestionService {
 
+    void startTest() throws IOException;
+
     Question getQuestions() throws IOException;
+
     void getResult() throws IOException;
 }

@@ -7,9 +7,9 @@ public class Question {
     private final String fileName;
     private final List<String> question;
 
-    public Question(String fileName,List<String> question) {
+    public Question(String fileName, List<String> question) {
 
         this.fileName = fileName;
-        this.question=question;
+        this.question = question;
     }
 }

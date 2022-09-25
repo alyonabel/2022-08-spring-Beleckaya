@@ -1,6 +1,5 @@
 package ru.otus.spring.hw02.dao;
 
-import org.springframework.stereotype.Component;
 import ru.otus.spring.hw02.domain.Question;
 import ru.otus.spring.hw02.exceptions.TestFileException;
 
@@ -12,15 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-@Component("questionDao")
 public class QuestionDaoImpl implements QuestionDao {
 
     private final String fileName;
     private final String fileAnswersName;
     private final List<String> questions = new ArrayList<>();
-    private final ArrayList answersUser = new ArrayList(5);
-    private final  ArrayList rightAnswers = new ArrayList(5);
+    private final List<String> answersUser = new ArrayList<>(5);
+    private final List<String> rightAnswers = new ArrayList<>(5);
 
     public QuestionDaoImpl(String fileName, String fileAnswersName) {
         this.fileName = fileName;

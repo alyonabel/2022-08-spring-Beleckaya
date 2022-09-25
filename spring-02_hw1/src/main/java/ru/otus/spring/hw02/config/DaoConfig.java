@@ -11,7 +11,7 @@ import ru.otus.spring.hw02.dao.QuestionDaoImpl;
 public class DaoConfig {
 
     @Bean
-    public QuestionDao questionDao(){
-        return new QuestionDaoImpl("questions.csv","answers.csv" );
+    public QuestionDao questionDao() {
+        return new QuestionDaoImpl("questions.csv", "answers.csv");
     }
 }
