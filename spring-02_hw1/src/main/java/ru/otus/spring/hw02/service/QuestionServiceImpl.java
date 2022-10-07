@@ -3,7 +3,6 @@ package ru.otus.spring.hw02.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.dao.QuestionDao;
-import ru.otus.spring.hw02.domain.Question;
 
 import java.util.Scanner;
 
@@ -17,6 +16,7 @@ public class QuestionServiceImpl implements QuestionService {
         this.dao = dao;
     }
 
+    @Override
     public void introduceTest() {
         Scanner in = new Scanner(System.in);
         System.out.println("\nHello! Let's start the test!\nPlease introduce yourself! Input your name and press Enter\n");
@@ -25,9 +25,9 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getQuestions() {
+    public void getQuestions() {
         introduceTest();
-        return dao.findQuestions();
+        dao.findQuestions();
     }
 
     @Override
