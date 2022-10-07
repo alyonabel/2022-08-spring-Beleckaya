@@ -1,15 +1,13 @@
 package ru.otus.spring.hw02.service;
 
-import java.io.IOException;
-
 
 public interface QuestionService {
 
-    void startTest() throws IOException;
+    void startTest();
 
-    void getQuestions() throws IOException;
+    void getQuestions();
 
-    void getResult() throws IOException;
+    void getResult();
 
-    void introduceTest()throws IOException;
+    void introduceTest();
 }

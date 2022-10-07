@@ -24,22 +24,6 @@ public class QuestionDaoImpl implements QuestionDao {
         this.fileAnswersName = fileAnswersName;
     }
 
-    private void readFile(String file, List<String> list) {
-        try {
-            InputStream input = getClass().getClassLoader().getResourceAsStream(file);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                list.add(line);
-            }
-        } catch (TestFileException e) {
-            System.out.println("The reading a file isn't available! Please start the test later.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @Override
     public Question findQuestions() {
         readFile(fileName, questions);
@@ -58,7 +42,6 @@ public class QuestionDaoImpl implements QuestionDao {
         return new Question(fileName, questions);
     }
 
-
     @Override
     public void resultTest() {
         readFile(fileAnswersName, rightAnswers);
@@ -69,6 +52,22 @@ public class QuestionDaoImpl implements QuestionDao {
             }
         }
         System.out.println("Your score for the test: " + count);
+    }
+
+    private void readFile(String file, List<String> list) {
+        try {
+            InputStream input = getClass().getClassLoader().getResourceAsStream(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                list.add(line);
+            }
+        } catch (TestFileException e) {
+            System.out.println("The reading a file isn't available! Please start the test later.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
