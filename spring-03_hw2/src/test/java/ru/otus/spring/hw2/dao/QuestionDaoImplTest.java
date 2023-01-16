@@ -1,23 +1,31 @@
 package ru.otus.spring.hw2.dao;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.otus.spring.hw2.config.ApplicationProps;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(initializers = ConfigDataApplicationContextInitializer.class)
+@EnableConfigurationProperties(value = ApplicationProps.class)
+@ActiveProfiles("test")
 public class QuestionDaoImplTest  {
 
-    @Test
-    @DisplayName("If fileName is null, then NullPointerException")
-    void existFileQuestions() throws NullPointerException {
-        QuestionDaoImpl que = new QuestionDaoImpl(null,"");
-        assertThrows(NullPointerException.class, que::findQuestions);
-    }
+    @Autowired
+    private ApplicationProps applicationProps;
 
     @Test
-    @DisplayName("If fileName is null, then NullPointerException")
-    void existFileAnswers() throws NullPointerException {
-        QuestionDaoImpl que = new QuestionDaoImpl("",null);
-        assertThrows(NullPointerException.class, que::resultTest);
+    @DisplayName("BindingYMLPropertiesUnitTest")
+    void whenBindingYMLConfigFile_thenAllFieldsAreSet(){
+        Assertions.assertNotNull(applicationProps.getAnswersFile());
+        Assertions.assertNotNull(applicationProps.getQuestionsFile());
+        Assertions.assertNotNull(applicationProps.getLocale());
     }
 }

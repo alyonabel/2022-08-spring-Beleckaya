@@ -7,5 +7,5 @@ public interface QuestionDao {
 
     Question findQuestions();
 
-    void resultTest();
+    int resultTest();
 }

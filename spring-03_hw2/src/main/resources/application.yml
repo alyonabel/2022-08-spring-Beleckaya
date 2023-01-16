@@ -1,12 +1,11 @@
 spring:
   messages:
-    basename: "i18n/appmessages"
+    basename: "src/main/resources/i18n/messages"
     encoding: "UTF-8"
-
 
 application:
   questionsFile: "questions-ru.csv"
   answersFile: "answers.csv"
-  locale: ru
+  locale: ru_Ru
 
 

@@ -1,8 +1,8 @@
 package ru.otus.spring.hw2.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.otus.spring.hw2.config.ApplicationProps;
 import ru.otus.spring.hw2.domain.Question;
 import ru.otus.spring.hw2.exceptions.TestFileException;
 
@@ -25,11 +25,12 @@ public class QuestionDaoImpl implements QuestionDao {
     private String answersFile;
 
     @Autowired
-    public QuestionDaoImpl(@Value("${application.questionsFile}") String fileName, @Value("${application.answersFile}")String fileAnswersName) {
-        this.questionsFile = fileName;
-        this.fileAnswersName = fileAnswersName;
+    public QuestionDaoImpl(ApplicationProps applicationProps) {
+        this.questionsFile = applicationProps.getQuestionsFile();
+        this.fileAnswersName = applicationProps.getAnswersFile();
     }
 
+    @Override
     public Question findQuestions() {
         readFile(questionsFile, questions);
         System.out.println(questions.get(0) + "\n" + questions.get(1) + "\n" + questions.get(2) + "\n" + questions.get(3));
@@ -43,12 +44,11 @@ public class QuestionDaoImpl implements QuestionDao {
         answersUser.add(in.nextLine());
         System.out.println(questions.get(20) + "\n" + questions.get(21) + "\n" + questions.get(22) + "\n" + questions.get(23));
         answersUser.add(in.nextLine());
-        System.out.println("The test is over!");
         return new Question(questionsFile, questions);
     }
 
     @Override
-    public void resultTest() {
+    public int resultTest() {
         readFile(fileAnswersName, rightAnswers);
         int count = 0;
         for (int i = 0; i < rightAnswers.size(); i++) {
@@ -56,7 +56,7 @@ public class QuestionDaoImpl implements QuestionDao {
                 count++;
             }
         }
-        System.out.println("Your score for the test: " + count);
+         return count;
     }
 
     private void readFile(String file, List<String> list) {
